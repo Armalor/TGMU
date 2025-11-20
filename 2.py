@@ -1,7 +1,11 @@
 
 attempt = 1
-while (repeat := input('Крутим дальше?')) != 'нет':
+while True:
+    repeat = input('Крутим дальше?')
 
-    print(f' Вы ввели {repeat}, Поехали! Попытка', attempt)
+    if repeat == 'нет':
+        break
+
+    print('Поехали! Попытка', attempt)
     attempt += 1
 
