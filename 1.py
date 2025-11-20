@@ -5,11 +5,43 @@ class NotImplementedException(Exception):
     ...
 
 
+def roulette():
+    while True:
+
+        print("Отлично, делайте ставку!")
+
+        s = input("На какое поле ставить (0-32)?")
+
+        if not s.isdigit():
+            print('Нужно ввести число!')
+            continue
+
+        s = int(s)
+
+        win = random.randint(0, 32)
+
+        if s == win:
+            print("Вы победили, ура! Еще?")
+        else:
+            print(f"Вы проиграли, выпало {win}, увы!")
+
+        repeat = input('Сыграем еще? (да/нет)')
+
+        if repeat.strip().lower() == 'нет':
+            break
+
+
+def poker():
+    raise NotImplementedException("Пока нет других участников, извините!")
+
+
+def one_armed_bandit():
+    raise NotImplementedException("Однорукий бандит Вася пока в отпуске, извините!")
+
+
 print("Приветствуем вас в нашем казино!")
 
 enter = input("Желаете зайти (да/нет)?")
-
-# print('да' == enter)
 
 if 'да' == enter:
     print("Добро пожаловать!")
@@ -18,35 +50,12 @@ if 'да' == enter:
 
     try:
         if '1' == choose:
-
-            while True:
-
-                print("Отлично, делайте ставку!")
-
-                s = input("На какое поле ставить (0-32)?")
-
-                # if not s.isdigit():
-                #     print('Нужно ввести число!')
-                #     continue
-
-                s = int(s)
-
-                win = random.randint(0, 32)
-
-                if s == win:
-                    print("Вы победили, ура! Еще?")
-                else:
-                    print(f"Вы проиграли, выпало {win}, увы!")
-
-                repeat = input('Сыграем еще? (да/нет)')
-
-                if repeat.strip().lower() == 'нет':
-                    break
-
+            roulette()
         elif '2' == choose:
-            raise NotImplementedException("Пока нет других участников, извините!")
+            poker()
         elif '3' == choose:
-            raise NotImplementedException("Однорукий бандит Вася пока в отпуске, извините!")
+            one_armed_bandit()
+
     except NotImplementedException as err:
         print(f'Не работает: {err}')
 
