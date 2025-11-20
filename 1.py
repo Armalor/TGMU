@@ -1,5 +1,10 @@
 import random
 
+
+class NotImplementedException(Exception):
+    ...
+
+
 print("Приветствуем вас в нашем казино!")
 
 enter = input("Желаете зайти (да/нет)?")
@@ -11,36 +16,39 @@ if 'да' == enter:
 
     choose = input("Во что будете играть: рулетка (1), покер (2), однорукий бандит (3)")
 
-    if '1' == choose:
+    try:
+        if '1' == choose:
 
-        while True:
+            while True:
 
-            print("Отлично, делайте ставку!")
+                print("Отлично, делайте ставку!")
 
-            s = input("На какое поле ставить (0-32)?")
+                s = input("На какое поле ставить (0-32)?")
 
-            if not s.isdigit():
-                print('Нужно ввести число!')
-                continue
+                # if not s.isdigit():
+                #     print('Нужно ввести число!')
+                #     continue
 
-            s = int(s)
+                s = int(s)
 
-            win = random.randint(0, 32)
+                win = random.randint(0, 32)
 
-            if s == win:
-                print("Вы победили, ура! Еще?")
-            else:
-                print(f"Вы проиграли, выпало {win}, увы!")
+                if s == win:
+                    print("Вы победили, ура! Еще?")
+                else:
+                    print(f"Вы проиграли, выпало {win}, увы!")
 
-            repeat = input('Сыграем еще? (да/нет)')
+                repeat = input('Сыграем еще? (да/нет)')
 
-            if repeat.strip().lower() == 'нет':
-                break
+                if repeat.strip().lower() == 'нет':
+                    break
 
-    elif '2' == choose:
-        print("Пока нет других участников, извините!")
-    elif '3' == choose:
-        print("Однорукий бандит Вася пока в отпуске, извините!")
+        elif '2' == choose:
+            raise NotImplementedException("Пока нет других участников, извините!")
+        elif '3' == choose:
+            raise NotImplementedException("Однорукий бандит Вася пока в отпуске, извините!")
+    except NotImplementedException as err:
+        print(f'Не работает: {err}')
 
     print('Заходите еще!')
 
