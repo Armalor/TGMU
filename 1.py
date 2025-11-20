@@ -19,6 +19,10 @@ if 'да' == enter:
 
             s = input("На какое поле ставить (0-32)?")
 
+            if not s.isdigit():
+                print('Нужно ввести число!')
+                continue
+
             s = int(s)
 
             win = random.randint(0, 32)
