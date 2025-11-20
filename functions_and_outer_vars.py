@@ -4,16 +4,18 @@
 x = 5
 
 
-def func():
+def func(x):
     # global x
 
     y = 10
-    x = 555
+    x = x ** 2
     print(f'Переменная х равна {x}')
     print(f'Переменная y равна {y}')
 
 
 print(f'Мы снаружи, переменная х равна {x}')
-func()
+func(111)
+func(222)
+func(x)
 print(f'Мы снова снаружи, переменная х равна {x}')
 
