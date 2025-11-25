@@ -11,4 +11,34 @@ for d in lst:
 
 # То же самое, но СИЛЬНО короче с помощью списочного включения:
 lst2_1 = [k**2 for k in lst if k % 2 != 0]
-print(f'{lst2_1=}')
+# print(f'{lst2_1=}')
+
+# lst = [k for k in range(1, 100 + 1)]
+
+# print(f'{lst=}')
+
+string = 'А роза упала на лапу Азора'
+
+
+def is_palindrome(string: str) -> bool:
+    spaceless1 = [k.upper() for k in string if k != ' ']
+    spaceless2 = [k.upper() for k in string if k != ' ']
+    spaceless2.reverse()
+
+    return spaceless1 == spaceless2
+
+
+def is_palindrome2(string: str) -> bool:
+    spaceless1 = [k.upper() for k in string if k != ' ']
+
+    for i in range(-1, -1 * len(spaceless1)-1, -1):
+        reverse_i = (-1 * i) - 1
+        if spaceless1[i] != spaceless1[reverse_i]:
+            return False
+    return True
+
+
+ret = is_palindrome2(string)
+
+print(ret)
+
