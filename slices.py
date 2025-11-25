@@ -1,5 +1,15 @@
-from PIL import Image
+# Срезы:
 
-im = Image.open("images/cant_sleep.jpg")
+string = 'А роза упала на лапу Азора'
 
-im.show()
+
+def is_palindrome(string: str) -> bool:
+    spaceless = [k.upper() for k in string if k != ' ']
+
+    return spaceless == spaceless[::-1]
+
+
+ret = is_palindrome(string)
+
+print(ret)
+
