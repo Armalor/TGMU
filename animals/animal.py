@@ -37,4 +37,5 @@ class Animal:
 if __name__ == '__main__':
     a = Animal('Просто животное', 10, eyes_color='чорные!')
     print(a)
+    a.walk_by_4_legs()
 
