@@ -16,9 +16,9 @@ player = Player()
 
 all_sprites.add(player)
 
-ball = Ball()
-
-all_sprites.add(ball)
+for i in range(20):
+    ball = Ball()
+    all_sprites.add(ball)
 
 
 # Цикл игры
