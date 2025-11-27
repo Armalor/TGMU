@@ -1,3 +1,10 @@
+from random import choice
+
+
+class NotImplementedException(Exception):
+    pass
+
+
 class Animal:
 
     def __init__(self, name, weight, whool=None, eyes_color=None, dimension=None):
@@ -13,10 +20,32 @@ class Animal:
             ret += f' шерсть={self.whool}'
         return ret
 
+    def walk_by_4_legs(self):
+        print(f'{self.name} walks:')
+        print(f'1 leg')
+        print(f'2 leg')
+        print(f'3 leg')
+        print(f'4 leg')
 
+    def eat(self, food):
+        print(f'Животное {self.name} ест {food}')
+
+    def voice(self):
+        # pass
+        raise NotImplementedException(f'Метод не реализован для общего класса {self.__class__.__name__}')
+
+
+class Cat(Animal):
+    def voice(self):
+        choices = ['мяучет', 'мурчит']
+        print(f'Кот {self.name} {choice(choices)}')
 
 
 if __name__ == '__main__':
-    a = Animal('Животне', 5, whool="Длинная, волосатая")
+    abyss = Cat('Абис', 4, whool='короткая коричневая')
+    blueberry = Cat('Черника', 4.5, whool='черная средняя')
 
-    print(a)
+    print(abyss)
+    print(blueberry)
+    abyss.voice()
+    blueberry.voice()
